@@ -1,0 +1,20 @@
+
+说明：
+到官网下载OpenOffice，我们用的就是最新的版本4.1.5  exe安装包准备好
+官网地址：www.openoffice.org
+
+开发服务器端安装openoffice插件，安装路径记住，方便后面开启openoffice服务。
+如下为我在安装的时候服务器端安装路径：D:/openoffice1。（之后程序会用到）
+
+
+接着cmd到图上program目录，输入：
+soffice -headless -accept=“socket,host=127.0.0.1,port=8100;urp;” -nofirststartwizard
+
+开启openoffice服务
+
+黑窗口无报错 则进程开启成功  后期可把openOffice服务进程  封装成开机自启动服务
+
+参考网址：
+https://blog.csdn.net/CEVERY/article/details/85702095
+https://blog.csdn.net/qq_42944520/article/details/90607328?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task
+https://blog.csdn.net/ITBigGod/article/details/80300177?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task

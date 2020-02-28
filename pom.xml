@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.chinasoft</groupId>
+    <artifactId>springbootoffice</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>springbootoffice</name>
+    <description>Demo project for Spring Boot</description>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.2.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.20</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.tobato</groupId>
+            <artifactId>fastdfs-client</artifactId>
+            <version>1.25.4-RELEASE</version>
+        </dependency>
+        <dependency>
+            <!-- spring-boot整合mybatis -->
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!-- MyBatis提供了拦截器接口，我们可以实现自己的拦截器， 将其作为一个plugin装入到SqlSessionFactory中。 Github上有位开发者写了一个分页插件，我觉得使用起来还可以，挺方便的。
+            Github项目地址： https://github.com/pagehelper/Mybatis-PageHelper -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+        <!-- tomcat 的支持. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <!-- 添加<scope>provided</scope>，因为provided表明该包只在编译和测试的时候用 -->
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <!-- jsp页面支持 -->
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <!-- 注意 开发启用logg4j看报错
+		部署jar包 微服务运行 则必须注释  不然log4j与控制台冲突 -->
+        <!-- 这里需要指定版本，否则报错【有可能是spring-boot-1.5.4.RELEASE。版本没有管理log4j版本的原因】 -->
+        <!-- <dependency>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-starter-log4j</artifactId>
+             <version>1.3.2.RELEASE</version>
+         </dependency>-->
+
+
+        <!-- spring boot集成Swagger2 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+        <!-- devtools可以实现页面热部署（即页面修改后会立即生效，这个可以直接在application.properties文件中配置spring.thymeleaf.cache=false或者视图解析器设置缓存为false来实现），
+        实现类文件热部署（类文件修改后不会立即生效，待编译后生效），实现对属性文件的热部署。 即devtools会监听classpath下的文件变动，并且会立即重启应用（发生在保存时机），注意：因为其采用的虚拟机机制，该项重启是很快的 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+            <!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖SpringBootDemo1项目的项目如果想要使用devtools，需要重新引入 -->
+            <scope>true</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jdt.core.compiler</groupId>
+            <artifactId>ecj</artifactId>
+            <version>4.6.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <!-- 富文本编译器 图片上传 依赖 jar包的引入 -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        <!--  请注意    在</dependencies> 对标当中   配置<dependency></dependency> 为添加jar包的管理代码
+        其中<groupId>com.googlecode.json-simple</groupId> 是引入的网址
+        <artifactId>json-simple</artifactId>是jar包名  <version>1.1</version>是jar包版本号
+        如果还不会自己配  去maven仓库  的网站搜索 配置其jar包的源代码
+        http://www.mvnrepository.com/
+          -->
+
+        <!--jodconverter 核心包 -->
+        <!-- https://mvnrepository.com/artifact/org.jodconverter/jodconverter-core -->
+        <dependency>
+            <groupId>org.jodconverter</groupId>
+            <artifactId>jodconverter-core</artifactId>
+            <version>4.2.2</version>
+        </dependency>
+
+        <!--springboot支持包，里面包括了自动配置类
+        https://mvnrepository.com/artifact/org.jodconverter/jodconverter-spring-boot-starter-->
+        <dependency>
+            <groupId>org.jodconverter</groupId>
+            <artifactId>jodconverter-spring-boot-starter</artifactId>
+            <version>4.2.2</version>
+        </dependency>
+
+        <!--jodconverter 本地支持包
+         https://mvnrepository.com/artifact/org.jodconverter/jodconverter-local-->
+        <dependency>
+            <groupId>org.jodconverter</groupId>
+            <artifactId>jodconverter-local</artifactId>
+            <version>4.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.libreoffice</groupId>
+            <artifactId>unoloader</artifactId>
+            <version>5.1.4</version>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <!-- 生成的jar包 包名 在项目根目录 target文件夹中 -->
+        <finalName>DemoTest</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.chinasoft.springbootoffice.Application</mainClass>
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <!-- jsp网页配置根目录 -->
+                <directory>src/main/webapp</directory>
+                <targetPath>META-INF/resources</targetPath>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+            </resource>
+            <resource>
+                <!-- 数据持久层配置根目录 -->
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+            </resource>
+        </resources>
+
+    </build>
+
+</project>
